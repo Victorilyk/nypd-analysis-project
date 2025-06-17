@@ -1,1 +1,1 @@
-"# Main branch placeholder" 
+"# Empty main branch" 
