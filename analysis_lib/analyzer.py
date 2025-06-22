@@ -9,33 +9,33 @@ def analyze_data(data):
     """
 
     # Debug: show input structure
-    print("📥 Keys received:", list(data.keys()))
+    print("Keys received:", list(data.keys()))
     for name, df in data.items():
         print(f"{name}.shape:", df.shape)
         print(df['region'].head())
 
-    # Copy input DataFrames
+    # Copy input DataFrames to avoid mutating originals
     population_df = data['population'].copy()
     area_df = data['area'].copy()
     fires_df = data['fires'].copy()
     alcohol_df = data['alcohol'].copy()
 
-    # Normalize region names to lowercase and strip spaces
+    # Normalize region names (strip whitespace + lowercase)
     for df_ in [population_df, area_df, fires_df, alcohol_df]:
         df_['region'] = df_['region'].str.strip().str.lower()
 
-    # Merge all datasets by 'region'
-    df = population_df.merge(area_df, on='region')
-    df = df.merge(fires_df, on='region')
-    df = df.merge(alcohol_df, on='region')
+    # Merge datasets on normalized 'region'
+    df = population_df.merge(area_df, on='region', how='inner')
+    df = df.merge(fires_df, on='region', how='inner')
+    df = df.merge(alcohol_df, on='region', how='inner')
 
     # Calculate derived metrics
     df['density'] = (df['population'] / df['area']).round(2)
     df['fire_rate'] = (df['fire_count'] / df['population'] * 100000).round(2)
     df['alcohol_rate'] = (df['alcohol_sellers'] / df['population'] * 100000).round(2)
 
-    # Debug: show merged result
-    print("After merging and calculating:")
+    # Debug: show final DataFrame
+    print("\n After merging and calculating:")
     print(df.head())
 
     return df
