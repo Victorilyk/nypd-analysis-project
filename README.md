@@ -79,10 +79,10 @@ nypd-analysis-project/
 
 ## Hypotheses Analyzed
 
-1. 📈 **Population vs Fire Events**
-2. 🍻 **Population vs Alcohol-Selling Points**
-3. 🔥 **Alcohol-Selling Points vs Fire Events**
-4. 💡 **Population Density vs Fire Rate** (custom hypothesis)
+1.  **Population vs Fire Events**
+2.  **Population vs Alcohol-Selling Points**
+3.  **Alcohol-Selling Points vs Fire Events**
+4.  **Population Density vs Fire Rate** (custom hypothesis)
 
 Each hypothesis is tested using Pearson correlation, with results printed and saved to CSV.
 
