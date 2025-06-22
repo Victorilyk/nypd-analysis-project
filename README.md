@@ -99,8 +99,7 @@ pip install pytest
 pytest tests/
 ```
 
-```
-### `check_missing.py` — Missing Data Checker
+## `check_missing.py` — Missing Data Checker
 
 This script loads all CSV files from the specified directory and prints the number of missing values per column in each file.
 
