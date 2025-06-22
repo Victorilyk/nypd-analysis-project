@@ -109,8 +109,6 @@ This script loads all CSV files from the specified directory and prints the numb
 python check_missing.py
 ```
 
-* `--input_dir`: Path to the folder containing the CSV files (`alcohol.csv`, `fires.csv`, etc.)
-
  Output:
 
 For each file, it prints a summary of missing (NaN) values per column.
