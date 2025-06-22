@@ -12,7 +12,7 @@ def analyze_data(data):
         print(f"{name}.shape:", df.shape)
         print(df['region'].head())
 
-    # Make copies to avoid modifying originals
+    # Make copies
     population_df = data['population'].copy()
     area_df = data['area'].copy()
     fires_df = data['fires'].copy()
@@ -32,20 +32,22 @@ def analyze_data(data):
     df['fire_rate'] = (df['fire_count'] / df['population'] * 100000).round(2)
     df['alcohol_rate'] = (df['alcohol_sellers'] / df['population'] * 100000).round(2)
 
+    # Restore capitalized region names
+    df['region'] = df['region'].str.title()
+
+    # Optional: reorder columns
+    ordered_cols = ['region', 'population', 'area', 'fire_count', 'alcohol_sellers',
+                    'density', 'fire_rate', 'alcohol_rate']
+    df = df[ordered_cols]
+
     print("\nAfter merging and calculating:")
     print(df.head())
 
     return df
 
 def calculate_basic_statistics(df):
-    """
-    Returns basic statistical summary for numerical columns.
-    """
     return df.describe()
 
 def calculate_correlation(df1, df2, join_column, col1, col2):
-    """
-    Joins two dataframes on `join_column` and calculates the Pearson correlation between `col1` and `col2`.
-    """
     merged = df1.merge(df2, on=join_column)
     return merged[col1].corr(merged[col2])
