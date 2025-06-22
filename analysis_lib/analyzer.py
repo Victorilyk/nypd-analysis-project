@@ -8,35 +8,25 @@ def analyze_data(data):
     - Alcohol seller rate (sellers per 100,000 people)
     """
 
-    # Get individual DataFrames
+    print("Keys received:", list(data.keys()))
+    for name, df in data.items():
+        print(f"{name}.shape:", df.shape)
+        print(df['region'].head())
+
     population_df = data['population']
     area_df = data['area']
     fires_df = data['fires']
     alcohol_df = data['alcohol']
 
-    # Merge all datasets by 'region'
     df = population_df.merge(area_df, on='region')
     df = df.merge(fires_df, on='region')
     df = df.merge(alcohol_df, on='region')
 
-    # Calculate population density
     df['density'] = (df['population'] / df['area']).round(2)
-
-    # Calculate fire rate per 100,000 population
     df['fire_rate'] = (df['fire_count'] / df['population'] * 100000).round(2)
-
-    # Calculate alcohol seller rate per 100,000 population
     df['alcohol_rate'] = (df['alcohol_sellers'] / df['population'] * 100000).round(2)
 
-    def analyze_data(data_dict):
-    print("Keys received:", list(data_dict.keys()))
-    for name, df in data_dict.items():
-        print(f"{name}.shape:", df.shape)
-        print(df['region'].head())
-
-    print("➡After merging, shape:", df.shape)
+    print("➡ After merging and calculating:")
     print(df.head())
 
     return df
-
-
