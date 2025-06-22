@@ -33,10 +33,9 @@ def analyze_data(data):
 
     return df
 
-
 def calculate_basic_statistics(df):
     return df.describe()
 
-
-def calculate_correlation(df):
-    return df.corr()
+def calculate_correlation(df1, df2, join_column, col1, col2):
+    merged = df1.merge(df2, on=join_column)
+    return merged[col1].corr(merged[col2])
