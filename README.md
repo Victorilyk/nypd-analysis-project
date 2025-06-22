@@ -68,6 +68,8 @@ nypd-analysis-project/
 │   ├── test_cleaner.py               #  Tests for data cleaning
 │   └── test_analyzer.py              #  Tests for correlation and statistics
 │
+├── check_missing.py                   # 
+│
 ├── setup.py                           #  Installation script for pip (defines name, version, entry point etc.)
 ├── README.md                          #  Main documentation file with description, usage, structure, and instructions
 ├── requirements.txt                   #  List of dependencies (e.g., pandas, numpy, pytest)
@@ -96,6 +98,24 @@ Install testing tools and run:
 pip install pytest
 pytest tests/
 ```
+
+
+`check_missing.py` — Missing Data Checker
+
+This script loads all CSV files from the specified directory and prints the number of missing values per column in each file.
+
+ How to run:
+
+```bash
+python check_missing.py --input_dir my_data/
+```
+
+* `--input_dir`: Path to the folder containing the CSV files (`alcohol.csv`, `fires.csv`, etc.)
+
+ Output:
+
+For each file, it prints a summary of missing (NaN) values per column.
+
 
 ---
 
