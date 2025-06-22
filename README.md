@@ -42,24 +42,38 @@ python -m analysis_lib --input_dir my_data/ --output_file output.csv
 
 ```
 nypd-analysis-project/
-├── analysis_lib/            # Core analysis package
-│   ├── __main__.py          # CLI entry point (uses argparse)
-│   ├── data_loader.py
-│   ├── data_cleaner.py
-│   ├── analyzer.py
-│   ├── hypotheses.py
-│   └── reporter.py
-├── my_data/                 # Sample input data (CSV)
-├── notebooks/
-│   └── analysis_demo.ipynb  # Jupyter usage example
-├── profiling/
-│   ├── profiler_output.txt  # Profiling results
-│   └── profiling_explanation.md
-├── tests/
-│   └── ...                  # Unit tests
-├── setup.py                 # pip installation script
-├── README.md                # Documentation
-└── requirements.txt         # Dependencies
+├── analysis_lib/                      #  Main Python package with all business logic
+│   ├── __main__.py                    #  Entry point for the command-line interface (uses argparse)
+│   ├── data_loader.py                 #  Module for loading CSV data from a specified folder
+│   ├── data_cleaner.py                #  Module to clean and validate the data (missing values, type casting)
+│   ├── analyzer.py                    #  Module for statistical analysis and correlation computations
+│   ├── hypotheses.py                  #  Optional: Custom hypotheses analysis (e.g., population density vs fire rate)
+│   └── reporter.py                    #  Handles exporting results to CSV/JSON and logs dropped data
+│
+├── my_data/                           #  Folder with input data (CSV files): alcohol.csv, area.csv, fires.csv, population.csv
+│   ├── alcohol.csv                    #  Number of alcohol-selling places by region
+│   ├── area.csv                       #  Area size per region
+│   ├── fires.csv                      #  Number of fire events per region
+│   └── population.csv                 #  Population count per region
+│
+├── notebooks/                         #  Jupyter notebooks for demonstrating usage of the package
+│   └── analysis_demo.ipynb           #  Example notebook with step-by-step code: loading, cleaning, analysis
+│
+├── profiling/                         #  Folder with performance profiling results and explanation
+│   ├── profiler_output.txt           #  Output from a profiling run showing execution time per function
+│   └── profiling_explanation.md      #  Text file explaining potential bottlenecks based on profiler results
+│
+├── tests/                             #  Folder with unit tests for each module
+│   ├── test_loader.py                #  Tests for data loading
+│   ├── test_cleaner.py               #  Tests for data cleaning
+│   ├── test_analyzer.py              #  Tests for correlation and statistics
+│   └── __init__.py                   # (optional) Marks this as a test package
+│
+├── setup.py                           #  Installation script for pip (defines name, version, entry point etc.)
+├── README.md                          #  Main documentation file with description, usage, structure, and instructions
+├── requirements.txt                   #  List of dependencies (e.g., pandas, numpy, pytest)
+└── .gitignore                         #  Optional: Excludes virtual environments, cache, and output files from git
+
 ```
 
 ---
