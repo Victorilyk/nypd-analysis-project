@@ -39,3 +39,8 @@ def analyze_data(data):
     print(df.head())
 
     return df
+def calculate_basic_statistics(df):
+    return df.describe()
+
+def calculate_correlation(df):
+    return df.corr()
