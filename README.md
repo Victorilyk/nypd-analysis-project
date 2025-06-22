@@ -2,60 +2,82 @@
 
 Final assignment for the “Data in Python” course (Spring 2024/2025).
 
-This Python package performs data analysis on public datasets related to fires, alcohol licenses, population, and administrative areas (JST). It calculates correlations, checks data quality, and generates a clean report.
+This Python package performs data analysis on Polish public datasets related to fire incidents (PSP), alcohol-selling licenses, population, and local administrative areas (JST).  
+It computes correlations, cleans and validates data, and exports a statistical report.
 
 ---
 
 ## Installation
 
+Clone the repository and install the package locally:
+
 ```bash
+git clone https://github.com/Victorilyk/nypd-analysis-project.git
+cd nypd-analysis-project
 pip install .
 ```
+
+> Requires: Python 3.9+ and `pandas`
 
 ---
 
 ## Usage
 
-You can run the analysis from the command line using:
+Run the project using the CLI module:
 
 ```bash
-run-analysis --input my_data/alcohol.csv --output my_data/result.csv
+python -m analysis_lib --input_dir my_data/ --output_file output.csv
 ```
 
-- `--input_dir` – folder with input CSV files (`alcohol.csv`, `area.csv`, `fires.csv`, `population.csv`)
-- `--output_file` – file where the result of analysis will be saved
+- `--input_dir`: Folder containing the following files:
+  - `alcohol.csv`
+  - `area.csv`
+  - `fires.csv`
+  - `population.csv`
+- `--output_file`: CSV file where analysis results will be saved
 
 ---
 
 ## Project Structure
 
 ```
-nypd_analysis_project/
-├── analysis_lib/            # Core library
-├── my_data/                 # Input CSV files
-├── notebooks/               # Jupyter notebook demo
-├── profiling/               # Profiling results
-├── scripts/                 # Optional run scripts
-├── tests/                   # Unit tests
+nypd-analysis-project/
+├── analysis_lib/            # Core analysis package
+│   ├── __main__.py          # CLI entry point (uses argparse)
+│   ├── data_loader.py
+│   ├── data_cleaner.py
+│   ├── analyzer.py
+│   ├── hypotheses.py
+│   └── reporter.py
+├── my_data/                 # Sample input data (CSV)
+├── notebooks/
+│   └── analysis_demo.ipynb  # Jupyter usage example
+├── profiling/
+│   ├── profiler_output.txt  # Profiling results
+│   └── profiling_explanation.md
+├── tests/
+│   └── ...                  # Unit tests
+├── setup.py                 # pip installation script
 ├── README.md                # Documentation
-├── setup.py                 # Installation script
 └── requirements.txt         # Dependencies
 ```
 
 ---
 
-## Hypotheses analyzed
+## Hypotheses Analyzed
 
-1. 📈 Does a higher population in an area lead to more fire events?
-2. 🍻 Is there a link between population size and the number of alcohol licenses?
-3. 🔥 Are alcohol-selling companies associated with fire frequency?
-4. 💡 Own hypothesis: Is there a correlation between population density and fire risk?
+1. 📈 **Population vs Fire Events**
+2. 🍻 **Population vs Alcohol-Selling Points**
+3. 🔥 **Alcohol-Selling Points vs Fire Events**
+4. 💡 **Population Density vs Fire Rate** (custom hypothesis)
 
-Each correlation is calculated using grouped and cleaned data, and exported to a CSV file.
+Each hypothesis is tested using Pearson correlation, with results printed and saved to CSV.
 
 ---
 
 ## Running Tests
+
+Install testing tools and run:
 
 ```bash
 pip install pytest
@@ -66,12 +88,29 @@ pytest tests/
 
 ## Profiling
 
-Profiling results can be found in:
+Profiling results are available in:
+
 ```
 profiling/profiler_output.txt
 ```
 
-This includes detailed timing information about each function in the analysis pipeline. Bottlenecks (if any) are highlighted in the final exam discussion.
+They include execution time per function. Bottlenecks are discussed in `profiling_explanation.md`.
+
+To re-run profiling:
+
+```bash
+python profiling/profile_analysis.py
+```
+
+---
+
+## Jupyter Example
+
+A usage demo is provided in:
+
+```
+notebooks/analysis_demo.ipynb
+```
 
 ---
 
@@ -79,4 +118,4 @@ This includes detailed timing information about each function in the analysis pi
 
 **Viktor Ilyk**  
 3rd-year Computer Science student  
-Spring 24/25 – Final Assignment
+Spring 24/25 — Final Assignment  
