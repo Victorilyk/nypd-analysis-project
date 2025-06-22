@@ -109,7 +109,8 @@ python profiling/profile_analysis.py
 A usage demo is provided in:
 
 ```
-notebooks/analysis_demo.ipynb
+jupyter notebook
+
 ```
 
 ---
