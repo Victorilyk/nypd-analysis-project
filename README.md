@@ -48,8 +48,8 @@ nypd-analysis-project/
 │   ├── data_cleaner.py                #  Module to clean and validate the data (missing values, type casting)
 │   ├── analyzer.py                    #  Module for statistical analysis and correlation computations
 │   ├── hypotheses.py                  #  Optional: Custom hypotheses analysis (e.g., population density vs fire rate)
-│   └── reporter.py                    #  Handles exporting results to CSV/JSON and logs dropped data
-│
+│   ├── reporter.py                    #  Handles exporting results to CSV/JSON and logs dropped data
+│   └── __init__.py                   # (optional) Marks this as a test package
 ├── my_data/                           #  Folder with input data (CSV files): alcohol.csv, area.csv, fires.csv, population.csv
 │   ├── alcohol.csv                    #  Number of alcohol-selling places by region
 │   ├── area.csv                       #  Area size per region
@@ -60,14 +60,13 @@ nypd-analysis-project/
 │   └── analysis_demo.ipynb           #  Example notebook with step-by-step code: loading, cleaning, analysis
 │
 ├── profiling/                         #  Folder with performance profiling results and explanation
+│   ├── profile_analysis.py          #  Script to run analysis with profiling
 │   ├── profiler_output.txt           #  Output from a profiling run showing execution time per function
 │   └── profiling_explanation.md      #  Text file explaining potential bottlenecks based on profiler results
 │
 ├── tests/                             #  Folder with unit tests for each module
-│   ├── test_loader.py                #  Tests for data loading
 │   ├── test_cleaner.py               #  Tests for data cleaning
-│   ├── test_analyzer.py              #  Tests for correlation and statistics
-│   └── __init__.py                   # (optional) Marks this as a test package
+│   └── test_analyzer.py              #  Tests for correlation and statistics
 │
 ├── setup.py                           #  Installation script for pip (defines name, version, entry point etc.)
 ├── README.md                          #  Main documentation file with description, usage, structure, and instructions
