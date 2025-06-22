@@ -29,3 +29,7 @@ def analyze_data(data):
     df['alcohol_rate'] = (df['alcohol_sellers'] / df['population'] * 100000).round(2)
 
     return df
+    print("Merged dataset columns:", result_df.columns)
+    print("Shape of result:", result_df.shape)
+    print(result_df.head())
+
