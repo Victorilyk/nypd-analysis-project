@@ -1,6 +1,7 @@
 import argparse
 import os
 from analysis_lib import data_loader, data_cleaner, analyzer, reporter
+from analysis_lib.hypotheses import analyze_hypotheses  
 
 def main():
     parser = argparse.ArgumentParser(description="Run NYPD data analysis")
@@ -23,6 +24,9 @@ def main():
 
     # Clean data
     cleaned_data = data_cleaner.clean_data(raw_data)
+
+    # Run hypothesis analysis before main analysis
+    analyze_hypotheses(cleaned_data)
 
     # Analyze cleaned data
     analysis_results = analyzer.analyze_data(cleaned_data)
