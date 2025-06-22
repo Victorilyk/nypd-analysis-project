@@ -42,4 +42,6 @@ def main():
     # Save report
     reporter.save_report(analysis_results, args.output_file)
 
-    print(f"✅ Analysis complete. Results saved to: {args.output_file}")
+    print(f"Analysis complete. Results saved to: {args.output_file}")
+    print(analysis_results.head())
+    print(analysis_results.shape)
