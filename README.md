@@ -19,7 +19,7 @@ pip install .
 You can run the analysis from the command line using:
 
 ```bash
-run-analysis --input_dir my_data --output_file my_data/final_output.csv
+run-analysis --input my_data/alcohol.csv --output my_data/result.csv
 ```
 
 - `--input_dir` – folder with input CSV files (`alcohol.csv`, `area.csv`, `fires.csv`, `population.csv`)
