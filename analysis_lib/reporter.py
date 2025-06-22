@@ -10,4 +10,5 @@ def save_report(df: pd.DataFrame, filename: str):
     else:
         print(f"{name.upper()}: Unknown type: {type(df)}")
 
-    df.to_csv(filename, index=False)
+df.to_csv(output_path, index=False, encoding="utf-8", sep=";")
+
