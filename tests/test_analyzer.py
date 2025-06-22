@@ -7,9 +7,9 @@ def test_calculate_basic_statistics():
         'Y': [10, 20, 30, 40, 50]
     })
     stats = calculate_basic_statistics(df)
-    assert 'X' in stats.index
-    assert 'mean' in stats.columns
-    assert round(stats.loc['Y']['mean']) == 30
+    assert 'X' in stats.columns
+    assert 'mean' in stats.index
+    assert round(stats.loc['mean', 'Y']) == 30
 
 def test_calculate_correlation():
     df1 = pd.DataFrame({
