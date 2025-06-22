@@ -17,10 +17,11 @@ def clean_data(data_dict):
         cleaned_data[name] = df
 
     return cleaned_data
-   
-    def check_missing_values(df):
+
+
+def check_missing_values(df):
     return df.isnull().sum()
 
-    def clean_dataframe(df):
-    return df.dropna()
 
+def clean_dataframe(df):
+    return df.dropna()
