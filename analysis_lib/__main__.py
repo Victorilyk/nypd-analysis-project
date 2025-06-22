@@ -11,7 +11,6 @@ def main():
 
     print(f"Loading data from: {args.input_dir}")
 
-    # Construct file paths
     paths = {
         'alcohol': os.path.join(args.input_dir, "alcohol.csv"),
         'area': os.path.join(args.input_dir, "area.csv"),
@@ -19,22 +18,20 @@ def main():
         'population': os.path.join(args.input_dir, "population.csv"),
     }
 
-    # Load all files using data_loader
     raw_data = {key: data_loader.load_csv(path) for key, path in paths.items()}
-
-    # Clean data
     cleaned_data = data_cleaner.clean_data(raw_data)
 
-    # Run hypothesis analysis before main analysis
-    analyze_hypotheses(cleaned_data)
+    print("\nAvailable columns in cleaned data:")
+    for key, df in cleaned_data.items():
+        print(f"{key.upper()}: {df.columns.tolist()}")
 
-    # Analyze cleaned data
+    
     analysis_results = analyzer.analyze_data(cleaned_data)
+    analyze_hypotheses(analysis_results)
 
-    # Save report
     reporter.save_report(analysis_results, args.output_file)
 
-    print(f"Analysis complete. Results saved to: {args.output_file}")
+    print(f"\nAnalysis complete. Results saved to: {args.output_file}")
     print(analysis_results.head())
     print(f"Total rows: {analysis_results.shape[0]}, columns: {analysis_results.shape[1]}")
 
