@@ -106,7 +106,7 @@ This script loads all CSV files from the specified directory and prints the numb
  How to run:
 
 ```bash
-python check_missing.py --input_dir my_data/
+python check_missing.py
 ```
 
 * `--input_dir`: Path to the folder containing the CSV files (`alcohol.csv`, `fires.csv`, etc.)
