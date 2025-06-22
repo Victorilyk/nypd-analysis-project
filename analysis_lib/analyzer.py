@@ -28,8 +28,15 @@ def analyze_data(data):
     # Calculate alcohol seller rate per 100,000 population
     df['alcohol_rate'] = (df['alcohol_sellers'] / df['population'] * 100000).round(2)
 
+    def analyze_data(data_dict):
+    print("Keys received:", list(data_dict.keys()))
+    for name, df in data_dict.items():
+        print(f"{name}.shape:", df.shape)
+        print(df['region'].head())
+
+    print("➡After merging, shape:", df.shape)
+    print(df.head())
+
     return df
-    print("Merged dataset columns:", result_df.columns)
-    print("Shape of result:", result_df.shape)
-    print(result_df.head())
+
 
